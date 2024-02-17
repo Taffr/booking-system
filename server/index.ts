@@ -1,12 +1,10 @@
 import express from 'express';
+import { getAllUsersController } from './src/di';
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080; // TODO: Use environment variable
 
-app.get('/', (_, res) => {
-  res.send('Hello World!');
-});
-
+app.get('/', getAllUsersController);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
