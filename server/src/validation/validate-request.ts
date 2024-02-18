@@ -8,8 +8,8 @@ export const validateRequest = (schema: AnyZodObject) => {
                 body: req.body,
                 query: req.query,
                 params: req.params,
-            });
-            next();
+            })
+            next()
         } catch (error) {
             const parseErrors = (error as ZodError).errors
             res.status(400).send(parseErrors)

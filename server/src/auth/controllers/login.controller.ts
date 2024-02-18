@@ -24,7 +24,7 @@ export const loginControllerFactory = (
             return res.status(401).json({ message: 'Invalid password' })
         }
 
-        const token = sign({ rest })
+        const token = sign(rest)
 
         return res.status(200).json({ token })
     }

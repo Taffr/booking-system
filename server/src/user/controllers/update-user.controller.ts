@@ -2,17 +2,20 @@ import type { Response } from 'express'
 import type { UpdateUser } from '../model'
 import type { ValidatedRequest} from '../../validation'
 import type { UpdateUserInput } from './schemas/update-user.schema'
+import type { WithUser } from '../../auth/types/with-user.type'
 
 export const updateUserControllerFactory = (
     updateUser: UpdateUser
-) => async (req: ValidatedRequest<UpdateUserInput>, res: Response) => {
-    const { id } = req.params
-    const { body } = req
+) => async (req: WithUser<ValidatedRequest<UpdateUserInput>>, res: Response) => {
+    const { params: { id }, body, user } = req
+    if (user.id !== id) {
+        return res.status(403).json({ message: 'Unauthorized' })
+    }
 
-    const user = await updateUser({ id, ...body })
+    const updateInfo = await updateUser({ id, ...body })
 
-    if (!user.isOk) {
-        return res.status(400).json({ message: user.error })
+    if (!updateInfo.isOk) {
+        return res.status(400).json({ message: updateInfo.error })
     }
 
     return res.status(200).json({ message: 'User updated' })
