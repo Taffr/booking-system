@@ -16,7 +16,7 @@ export const updatePropertyControllerFactory = (
                 name
             })
             if (!result.isOk) {
-                res.status(401).json({ error: result.error })
+                return res.status(403).json({ error: result.error })
             }
 
             res.status(200).json({ id })

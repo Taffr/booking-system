@@ -15,7 +15,7 @@ export const updateUserControllerFactory = (
     const updateInfo = await updateUser({ id, ...body })
 
     if (!updateInfo.isOk) {
-        return res.status(400).json({ message: updateInfo.error })
+        return res.status(500).json({ message: updateInfo.error }) // Some other error reason for error.
     }
 
     return res.status(200).json({ message: 'User updated' })

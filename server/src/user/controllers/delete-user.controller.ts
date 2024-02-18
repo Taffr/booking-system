@@ -14,6 +14,7 @@ export const deleteUserControllerFactory = (
         if (user.id !== id) {
             return res.status(403).json({ message: 'Unauthorized' })
         }
+
         const result = await deleteUser(id)
 
         if (!result.isOk) {
