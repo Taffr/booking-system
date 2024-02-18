@@ -1,4 +1,4 @@
-import { Selectable, Insertable } from 'kysely'
+import { Selectable, Insertable, Updateable } from 'kysely'
 
 export type Database = {
     users: UsersTable;
@@ -14,3 +14,4 @@ type UsersTable = {
 
 export type User = Selectable<UsersTable>
 export type NewUser = Insertable<UsersTable>
+export type UpdateableUser = Updateable<UsersTable>

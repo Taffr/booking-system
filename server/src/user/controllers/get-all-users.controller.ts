@@ -9,7 +9,6 @@ export const getAllUsersQueryFactory = (
         const users = await getAllUsers();
         res.json(users);
     } catch (e) {
-        console.log(e);
         res.status(500).send('Failed to retrieve users');
     }
 }

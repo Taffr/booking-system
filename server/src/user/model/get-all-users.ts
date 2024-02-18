@@ -1,10 +1,11 @@
-import type { Connection } from '../../db';
+import type { Connection, User } from '../../db';
+import {PublicUser} from '../types';
 
 export type GetAllUsers = ReturnType<typeof getAllUserFactory>;
 export const getAllUserFactory = (db: Connection) => {
-    return async () => {
+    return async (): Promise<PublicUser[]> => {
         try {
-            return await db.selectFrom('users').selectAll().execute()
+            return await db.selectFrom('users').select([ 'id', 'name', 'phone' ]).execute()
         } catch (e) {
             throw new Error('Failed to retrieve users');
         }

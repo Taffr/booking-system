@@ -1,11 +1,13 @@
 import { Router } from 'express'
-import { getAllUsersController, registerUserController } from './di'
+import { getAllUsersController, registerUserController, updateUserController } from './di'
 import { validateRequest } from '../validation'
-import { registerUserSchema } from './controllers/schemas'
+import { RegisterUserSchema, UpdateUserSchema } from './controllers/schemas'
 
 const router = Router()
-router.get('/all', getAllUsersController)
-router.post('/register', validateRequest(registerUserSchema), registerUserController)
+router.get('/', getAllUsersController)
+router.post('/', validateRequest(RegisterUserSchema), registerUserController)
+router.put('/:id', validateRequest(UpdateUserSchema), updateUserController)
+// router.delete('/:id', deleteUserController)
 
 export const userRouter = router;
 export const USER_ROUTE = '/user';
