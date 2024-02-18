@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { getReservationsController, checkInController, createReservationController } from './di'
-import { GetReservationsSchema, CheckInSchema, CreateReservationSchema } from './controllers'
+import { getReservationsController, checkInController, createReservationController, deleteReservationController } from './di'
+import { GetReservationsSchema, CheckInSchema, CreateReservationSchema, DeleteReservationSchema } from './controllers'
 import { userGuard } from '../auth'
 import { validateRequest } from '../validation'
 
@@ -22,9 +22,12 @@ router.put('/check-in/:reservationId', [ validateRequest(CheckInSchema), userGua
  * @param propertyId, the id of the property
  */
 router.post('/:propertyId', [ validateRequest(CreateReservationSchema), userGuard ], createReservationController)
-
+/**
+ * Deletes a reservation
+ * @param reservationId, the id of the reservation
+ */
+router.delete('/:reservationId', [ validateRequest(DeleteReservationSchema), userGuard ], deleteReservationController)
 // router.put('/:id', updateReservation);
-// router.delete('/:id', deleteReservation);
 
 export const reservationsRouter = router
 export const RESERVATIONS_ROUTE = '/reservations'

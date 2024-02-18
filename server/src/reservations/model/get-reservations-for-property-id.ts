@@ -1,5 +1,5 @@
-import {Connection, Reservation} from "../../db"
-import {Result} from "../../util"
+import { Connection, Reservation } from '../../db'
+import { Result } from '../../util'
 
 export type GetReservationsForPropertyId = ReturnType<typeof getReservationsForPropertyIdFactory>
 export const getReservationsForPropertyIdFactory = (
