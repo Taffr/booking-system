@@ -16,13 +16,13 @@ export const registerUserControllerFactory = (
         const id = uuid()
 
         try {
-            const user = await addUser({
+            await addUser({
                 id,
                 name,
                 phone,
                 hash: h,
             })
-            res.status(201).json(user)
+            res.status(201).json({ id })
         } catch (e) {
             return res.status(500).json({ message: 'Could not add user' })
         }

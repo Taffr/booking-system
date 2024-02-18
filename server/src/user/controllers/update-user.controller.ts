@@ -6,8 +6,8 @@ import type { WithUser } from '../../auth/types/with-user.type'
 
 export const updateUserControllerFactory = (
     updateUser: UpdateUser
-) => async (req: WithUser<ValidatedRequest<UpdateUserInput>>, res: Response) => {
-    const { params: { id }, body, user } = req
+) => async (req: ValidatedRequest<UpdateUserInput>, res: Response) => {
+    const { params: { id }, body, user } = req as WithUser<ValidatedRequest<UpdateUserInput>> // TODO: Should have better typesafety...
     if (user.id !== id) {
         return res.status(403).json({ message: 'Unauthorized' })
     }

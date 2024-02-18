@@ -15,9 +15,7 @@ export const userGuardFactory = (
         }
 
         const split = token.split('Bearer ')[1]
-        console.log(split)
         const isValid = validateJwt(split)
-        console.log(isValid)
 
         if (!isValid) {
             res.status(401).json({ message: 'Authentication failed' })

@@ -1,3 +1,3 @@
 import { Request } from 'express';
 
-export type ValidatedRequest<T> = (T extends { params: unknown, body: unknown } ? Request<T['params'], {}, T['body']> : (T extends { body: unknown } ? Request<{}, {}, T['body']> : never))
+export type ValidatedRequest<T> = (T extends { params: unknown, body: unknown } ? Request<T['params'], {}, T['body']> : (T extends { body: unknown } ? Request<{}, {}, T['body']> : (T extends { params: unknown } ? Request<T['params'], {}, {}> : Request<{}, {}, {}>)))
