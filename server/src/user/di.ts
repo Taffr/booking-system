@@ -1,6 +1,9 @@
 import { db } from '../db'
-import { getAllUserFactory } from './model'
-import { getAllUsersQueryFactory } from './controllers'
+import { uuid, hash } from '../auth'
+import { getAllUserFactory, addUserFactory } from './model'
+import { getAllUsersQueryFactory, registerUserControllerFactory } from './controllers'
 
-export const getAllUsers = getAllUserFactory(db);
-export const getAllUsersController = getAllUsersQueryFactory(getAllUsers);
+export const addUser = addUserFactory(db)
+export const registerUserController = registerUserControllerFactory(hash, uuid, addUser)
+export const getAllUsers = getAllUserFactory(db)
+export const getAllUsersController = getAllUsersQueryFactory(getAllUsers)
