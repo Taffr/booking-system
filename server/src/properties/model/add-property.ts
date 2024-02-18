@@ -8,7 +8,7 @@ export const addPropertyFactory = (
         try {
             await db.insertInto('properties').values(property).execute()
         } catch (e) {
-            throw new Error('Failed to retrieve properties');
+            throw new Error('Failed to add property');
         }
     }
 }

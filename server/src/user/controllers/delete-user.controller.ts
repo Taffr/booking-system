@@ -1,4 +1,4 @@
-import type { Request, Response } from 'express'
+import type { Response } from 'express'
 import type { DeleteUser } from '../model'
 import type { DeleteUserInput } from './schemas/delete-user.schema'
 import type { WithUser } from '../../auth'
