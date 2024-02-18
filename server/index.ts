@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllUsersController } from './src/di';
+import { getAllUsersController } from './src/user';
 
 const app = express();
 const PORT = 8080; // TODO: Use environment variable

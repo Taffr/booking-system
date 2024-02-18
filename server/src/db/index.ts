@@ -1,3 +1,2 @@
-export * from './connection'
+export * from './di'
 export * from './types/database.type'
-
