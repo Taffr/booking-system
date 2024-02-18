@@ -1,7 +1,6 @@
 import type { Request, Response } from 'express';
 import type { GetAllProperties } from '../model';
 
-
 export type GetAllPropertiesController = ReturnType<typeof getAllPropertiesControllerFactory>;
 export const getAllPropertiesControllerFactory = (
     getAllProperties: GetAllProperties
