@@ -1,4 +1,4 @@
-import { Selectable, Insertable, Updateable } from 'kysely'
+import { Selectable, Insertable, Updateable, } from 'kysely'
 
 export type Database = {
     users: UsersTable
