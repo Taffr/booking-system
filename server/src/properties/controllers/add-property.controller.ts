@@ -11,7 +11,7 @@ export const addPropertyControllerFactory = (
     uuid: MakeUuid,
 ) => {
     return async (req: ValidatedRequest<AddPropertyInput>, res: Response) => {
-        const { user, body: { name } } = req as WithUser<ValidatedRequest<AddPropertyInput>>;
+        const { user, body: { name } } = req as WithUser<ValidatedRequest<AddPropertyInput>>
         const id = uuid()
         try {
             const input = {
