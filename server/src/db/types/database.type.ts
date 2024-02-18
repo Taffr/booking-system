@@ -4,11 +4,10 @@ export type Database = {
     users: UsersTable;
 }
 
-export type UserPhoneNumber = `+${string}`; // e.g. '+4611223344', could be imporved further. 
 type UsersTable = {
     id: string
     name: string
-    phone: UserPhoneNumber
+    phone: string
     hash: string
 }
 

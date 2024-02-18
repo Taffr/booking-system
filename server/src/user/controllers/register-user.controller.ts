@@ -1,7 +1,8 @@
-import type { Request, Response } from 'express'
+import type { Response } from 'express'
 import type { HashFunction, MakeUuid } from '../../auth'
 import type { AddUser } from '../model'
-
+import type { RegisterUserInput } from './schemas'
+import {ValidatedRequest} from '../../validation'
 
 export type RegisterUserController = ReturnType<typeof registerUserControllerFactory>
 export const registerUserControllerFactory = (
@@ -9,10 +10,10 @@ export const registerUserControllerFactory = (
     uuid: MakeUuid,
     addUser: AddUser
 ) => {
-    return async (req: Request, res: Response) => {
+    return async (req: ValidatedRequest<RegisterUserInput>, res: Response) => {
         const { name, phone, password } = req.body
         const h = await hash(password, 10)
-        const id = uuid(password)
+        const id = uuid()
 
         try {
             const user = await addUser({
