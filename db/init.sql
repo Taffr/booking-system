@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS users (
   hash TEXT NOT NULL
 );
 
-
 CREATE TABLE IF NOT EXISTS properties (
     id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
@@ -25,7 +24,16 @@ CREATE TABLE IF NOT EXISTS reservations (
     FOREIGN KEY(renter_id) REFERENCES users(id)
 );
 
--- Initial data
+CREATE TABLE IF NOT EXISTS messages (
+    id TEXT PRIMARY KEY,
+    from_id TEXT NOT NULL,
+    to_id TEXT NOT NULL,
+    message TEXT NOT NULL,
+    FOREIGN KEY(to_id) REFERENCES users(id),
+    FOREIGN KEY(from_id) REFERENCES users(id)
+);
+
+-- Initial data for easier testing
 INSERT INTO users (id, name, phone, hash) VALUES ('1', 'John Doe', '+46711223344', 'somehash1');
 INSERT INTO users (id, name, phone, hash) VALUES ('2', 'Jane Doe', '+46722334455', 'somehash2');
 

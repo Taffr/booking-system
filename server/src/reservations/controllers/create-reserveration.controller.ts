@@ -9,6 +9,7 @@ export const createReservationControllerFactory = (
     uuid: MakeUuid
 ) => {
     /**
+     * There should probably be a check that the user is not reserve their own propery, but I am not going to invent buisness requirements..
      * There should be a check the property is free for the given dates (i.e. no overlapping reservations)
      * but I won't do that, even though it would be fairly easy, but it should be done if this was a "real" application.
      */

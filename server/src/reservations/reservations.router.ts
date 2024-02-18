@@ -5,6 +5,7 @@ import { userGuard } from '../auth'
 import { validateRequest } from '../validation'
 
 const router = Router()
+
 /**
  * Gets all reservations for a property
  * @param propertyId, the id of the property
@@ -22,12 +23,16 @@ router.put('/check-in/:reservationId', [ validateRequest(CheckInSchema), userGua
  * @param propertyId, the id of the property
  */
 router.post('/:propertyId', [ validateRequest(CreateReservationSchema), userGuard ], createReservationController)
+
 /**
  * Deletes a reservation
  * @param reservationId, the id of the reservation
  */
 router.delete('/:reservationId', [ validateRequest(DeleteReservationSchema), userGuard ], deleteReservationController)
-// router.put('/:id', updateReservation);
 
+/**
+ * I delibertely left out update reservation, because it doesn't make sense for a reserveration to get changed if the dates are already set.
+ * If the user wants to check in, they can do that with the check-in endpoint.
+ */
 export const reservationsRouter = router
 export const RESERVATIONS_ROUTE = '/reservations'

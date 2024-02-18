@@ -4,6 +4,7 @@ export type Database = {
     users: UsersTable
     properties: PropertiesTable
     reservations: ReservationsTable
+    messages: MessagesTable
 }
 
 type UsersTable = {
@@ -28,6 +29,13 @@ type ReservationsTable = {
     checked_in: boolean
 }
 
+type MessagesTable = {
+    id: string
+    from_id: string
+    to_id: string
+    message: string
+}
+
 export type User = Selectable<UsersTable>
 export type NewUser = Insertable<UsersTable>
 export type UpdateableUser = Updateable<UsersTable>
@@ -39,3 +47,7 @@ export type UpdateableProperty = Updateable<PropertiesTable>
 export type Reservation = Selectable<ReservationsTable>
 export type NewReservation = Insertable<ReservationsTable>
 export type UpdateableReservation = Updateable<ReservationsTable>
+
+export type Message = Selectable<MessagesTable>
+export type NewMessage = Insertable<MessagesTable>
+export type UpdateableMessage = Updateable<MessagesTable>
