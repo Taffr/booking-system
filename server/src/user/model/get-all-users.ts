@@ -1,4 +1,4 @@
-import type { Connection, User } from '../../db';
+import type { Connection } from '../../db';
 import {PublicUser} from '../types';
 
 export type GetAllUsers = ReturnType<typeof getAllUserFactory>;
