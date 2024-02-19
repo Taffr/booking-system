@@ -4,7 +4,7 @@
 ## Start the stack (requires docker desktop)
 `docker compose up` in the root repository.
 
-If you haven't got Docker desktop, you could build the images themselves indiviually. You would probably have to change some things in the `server/db/connection.ts` file, and solve networking between the containers on your own.
+If you haven't got Docker desktop, you could build the images themselves indiviually, and then run them. (DB container should be run first though) You would probably have to change some things in the `server/db/connection.ts` file, and solve networking between the containers on your own.
 
 ## Some of the features
 (*) = Requires authentication
