@@ -1,1 +1,1 @@
-export * from './required.types'
+export * from "./required.types";

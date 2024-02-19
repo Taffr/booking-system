@@ -1,9 +1,9 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 export const DeleteUserSchema = z.object({
-    params: z.object({
-        id: z.string(),
-    })
-})
+  params: z.object({
+    id: z.string(),
+  }),
+});
 
-export type DeleteUserInput = z.infer<typeof DeleteUserSchema>
+export type DeleteUserInput = z.infer<typeof DeleteUserSchema>;

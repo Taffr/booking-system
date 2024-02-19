@@ -1,10 +1,19 @@
-import { Router  } from 'express'
-import { userGuard } from '../auth'
-import { CreateMessageSchema, DeleteMessageSchema, UpdateMessageSchema } from './controllers'
-import { validateRequest } from '../validation'
-import { createMessageController, getMessagesForUserController, deleteMessageController, updateMessageController } from './di'
+import { Router } from "express";
+import { userGuard } from "../auth";
+import {
+  CreateMessageSchema,
+  DeleteMessageSchema,
+  UpdateMessageSchema,
+} from "./controllers";
+import { validateRequest } from "../validation";
+import {
+  createMessageController,
+  getMessagesForUserController,
+  deleteMessageController,
+  updateMessageController,
+} from "./di";
 
-const router = Router()
+const router = Router();
 /**
  * Creates a new message
  * @param to - the user id of the recipient
@@ -14,14 +23,18 @@ const router = Router()
  * @throws 400 - if the request is invalid
  * @throws 401 - if the user is not authenticated
  */
-router.post('/', [ validateRequest(CreateMessageSchema), userGuard ], createMessageController)
+router.post(
+  "/",
+  [validateRequest(CreateMessageSchema), userGuard],
+  createMessageController,
+);
 
 /**
  * Gets all messages for a user, where the user is either the sender or the recipient
  * @returns an array of messages
  * @throws 401 - if the user is not authenticated
  */
-router.get('/', userGuard, getMessagesForUserController)
+router.get("/", userGuard, getMessagesForUserController);
 
 /**
  * Deletes a message
@@ -31,7 +44,11 @@ router.get('/', userGuard, getMessagesForUserController)
  * @throws 401 - if the user is not authenticated
  * @throws 403 - if the user is not the sender of the message
  */
-router.delete('/:messageId', [ validateRequest(DeleteMessageSchema), userGuard ], deleteMessageController)
+router.delete(
+  "/:messageId",
+  [validateRequest(DeleteMessageSchema), userGuard],
+  deleteMessageController,
+);
 
 /**
  * Updates a message
@@ -42,7 +59,11 @@ router.delete('/:messageId', [ validateRequest(DeleteMessageSchema), userGuard ]
  * @throws 401 - if the user is not authenticated
  * @throws 403 - if the user is not the sender of the message
  */
-router.put('/:messageId', [ validateRequest(UpdateMessageSchema), userGuard ], updateMessageController)
+router.put(
+  "/:messageId",
+  [validateRequest(UpdateMessageSchema), userGuard],
+  updateMessageController,
+);
 
-export const messagesRouter = router
-export const MESSAGES_ROUTE = '/messages'
+export const messagesRouter = router;
+export const MESSAGES_ROUTE = "/messages";

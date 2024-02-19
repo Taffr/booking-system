@@ -1,2 +1,2 @@
-export * from './di'
-export * from './properties.router'
+export * from "./di";
+export * from "./properties.router";

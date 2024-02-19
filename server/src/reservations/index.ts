@@ -1,2 +1,2 @@
-export * from './di'
-export * from './reservations.router'
+export * from "./di";
+export * from "./reservations.router";

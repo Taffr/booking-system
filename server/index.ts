@@ -1,5 +1,7 @@
-import { app } from './src/app'
+import { app } from "./src/app";
 
-const PORT = 8080 // TODO: Use environment variable
+const PORT = 8080; // TODO: Use environment variable
 
-app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`))
+app.listen(PORT, () =>
+  console.log(`Server is running on http://localhost:${PORT}`),
+);

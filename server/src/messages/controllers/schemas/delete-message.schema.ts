@@ -1,9 +1,9 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 export const DeleteMessageSchema = z.object({
-    params: z.object({
-        messageId: z.string(),
-    }),
-})
+  params: z.object({
+    messageId: z.string(),
+  }),
+});
 
-export type DeleteMessageInput = z.infer<typeof DeleteMessageSchema>
+export type DeleteMessageInput = z.infer<typeof DeleteMessageSchema>;

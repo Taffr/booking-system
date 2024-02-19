@@ -1,2 +1,2 @@
-export * from './validate-request'
-export * from './types/validated-request.type'
+export * from "./validate-request";
+export * from "./types/validated-request.type";
